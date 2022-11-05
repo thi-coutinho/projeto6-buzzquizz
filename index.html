@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <title>BuzzQuizz</title>
+</head>
+
+<body>
+    <header>
+        <p>BuzzQuizz</p>
+    </header>
+    <!--conteúdo do site-->
+    <div class="conteudo-total">
+        <div class="Tela1">
+            <!--Div para o usuário criar seu próprio quizz-->
+            <div class="quizzUsuario">
+                <div class="texto1">Você não criou nenhum quizz ainda :(</div>
+                <button class="criarQuizz">Criar Quizz</button>
+            </div>
+            <!--div onde estão os quizzes do usuário(quando ele já os criou)-->
+            <div class="quizzExistenteUsuario escondido">
+                <!--fiz essa "seção usuario" para poder colocar o texto e o botão + lado a lado com o display flex-->
+                <div class="secaoUsuario">
+                    <div class="texto3">Seus quizzes</div>
+                    <ion-icon name="add-circle"></ion-icon>
+                </div>
+                <!--div com os quizzes que o usuário criar-->
+                <div class="quizzUser">
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+
+                </div>
+            </div>
+            <!--Div com todos os quizzes-->
+            <div class="todosQuizzes">
+                <div class="texto2">Todos os quizzes</div>
+                <div class="quizzesDisponiveis">
+                    <!-- divs de cada quizz -->
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                    <div class="quizz">
+                        <div class="imagemQuiz">imagem do quizz</div>
+                        <div class="nomeQuizz">nome do quizz</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="paginaQuizzSelecionado escondido">
+            <div class="imagemQuizzSelecionado">imagem do quizz</div>
+            <div class="caixaPergunta">
+                <div class="textoPergunta">
+                    <p>pergunta pergunta pergunta</p>
+                </div>
+                <div class="caixaOpcoes">
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixaPergunta">
+                <div class="textoPergunta">
+                    <p>pergunta pergunta pergunta</p>
+                </div>
+                <div class="caixaOpcoes">
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixaPergunta">
+                <div class="textoPergunta">
+                    <p>pergunta pergunta pergunta</p>
+                </div>
+                <div class="caixaOpcoes">
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixaPergunta">
+                <div class="textoPergunta">
+                    <p>pergunta pergunta pergunta</p>
+                </div>
+                <div class="caixaOpcoes">
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                    <div class="opcao">
+                        <div class="imagemOpcao">opção</div>
+                        <div class="legendaOpcao">legenda</div>
+                    </div>
+                </div>
+            </div>
+            <div class="quizzFinalizado">
+                <div class="resultadoQuizz">
+                    <p>resultado do quizz</p>
+                </div>
+                <div class="descricaoResultado">
+                    <div class="imagemResultado">imagem</div>
+                    <div class="textoResultado">texto do resultado</div>
+                </div>
+            </div>
+            <button class="reiniciarQuizz">Reiniciar Quizz</button>
+            <div class="voltarHome"> Voltar para Home</div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

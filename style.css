@@ -1,0 +1,332 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*cabeçalho*/
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 69px;
+    background-color: #EC362D;
+    box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+    color: #FFFFFF;
+    font-size: 37px;
+    font-weight: 500;
+    line-height: 43px;
+}
+
+/*conteudo total da página, sem o cabeçalho*/
+.conteudo-total > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*div para o usuário criar seu quizz*/
+.quizzUsuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    width: 80%;
+    height: 181px;
+    background: #FAFAFA;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+}
+
+.texto1 {
+    width: 250px;
+    height: 70px;
+    color: #B9B9B9;
+    font-size: 20px;
+    font-weight: 400px;
+    text-align: center;
+}
+
+/*botão de criar o quizz*/
+.criarQuizz {
+    width: 151px;
+    height: 40px;
+    font-size: 21px;
+    color: #EC362D;
+    background: #FAFAFA;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+
+/*div em que estarão o texto "todos os quizzes" e os quizzes já existentes*/
+.todosQuizzes {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 160px;
+    width: 80%;
+}
+
+/*texto "todos os quizzes"*/
+.texto2 {
+    width: auto;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+/*div em que estão os quizzes existentes*/
+.quizzesDisponiveis {
+    /* margin-left: 5px; */
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 374px;
+    width: 1060px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.quizzesDisponiveis::-webkit-scrollbar {
+    width: 5px;
+    height: auto;
+    background-color: #aaa;
+    visibility: hidden;
+}
+
+.quizzesDisponiveis:hover::-webkit-scrollbar {
+    visibility: visible;
+}
+
+.quizzesDisponiveis::-webkit-scrollbar-thumb {
+    background: #000;
+    visibility: hidden;
+}
+
+.quizzesDisponiveis:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
+/*div de cada quizz*/
+.quizz {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 340px;
+    height: 181px;
+    background-color: aquamarine;
+    border-radius: 5px;
+
+}
+
+.imagemQuiz {
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+}
+
+.nomeQuizz {
+    color: #FFFFFF;
+    font-size: 19px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 28px;
+    left: 12px;
+    line-height: 22px;
+    align-items: center;
+    height: auto;
+    width: 301px;
+}
+
+
+
+/*nessa div estão os quizes do usuário, quando criados, e a div com a "seção Usuário"*/
+.quizzExistenteUsuario {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    width: 80%;
+}
+
+/*div somente com os quizzes do usuário*/
+.quizzUser {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*criei essa div "seção usuário", com texto e ícone, para conseguir colocar o texto e o botão lado a lado com o display flex*/
+.secaoUsuario {
+    display: flex;
+    align-items: center;
+}
+
+ion-icon {
+    color: #EC362D;
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+.texto3 {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+
+/*div em que estará a imagem do quizz selecionado*/
+.imagemQuizzSelecionado {
+    background-color: peru;
+    opacity: 60%;
+    width: 100%;
+    height: 227px;
+}
+
+/*página do quizz escolhido*/
+.paginaQuizzSelecionado {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec48;
+
+}
+
+/*div da pergunta, onde estarão a pergunta e as opções*/
+.caixaPergunta {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    background-color: #FFFFFF;
+    margin: 42px auto 10px auto;
+    width: 45%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textoPergunta {
+    margin-top: 20px;
+    background-color: #434CA0;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoPergunta p {
+    font-size: 23px;
+    color: #FAFAFA;
+    text-align: center;
+}
+
+/*essa div contem as 4 opções de resposta*/
+.caixaOpcoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 85%;
+    height: 150px;
+}
+
+/*div em que estará a alternativa, com imagem e legenda*/
+.opcao {
+    background-color: plum;
+    width: 45%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.imagemOpcao {
+    background-color: aquamarine;
+    width: 100%;
+    height: 75%;
+}
+
+.legendaOpcao {
+    margin-top: 6px;
+    font-size: 20px;
+    font-weight: 500;
+    height: 25%
+}
+
+/*div em que estará o resultado do quizz, com a imagem, o nível e a descrição do nível*/
+.quizzFinalizado {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    background-color: #FFFFFF;
+    margin: 42px auto 10px auto;
+    width: 45%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultadoQuizz {
+    background-color: #EC362D;
+    margin-top: 20px;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultadoQuizz p {
+    font-size: 23px;
+    color: #FAFAFA;
+    text-align: center;
+}
+
+.descricaoResultado {
+    width: 80%;
+    margin-top: 20px;
+    display: flex;
+}
+
+.imagemResultado {
+    margin-bottom: 10px;
+    background-color: yellow;
+    width: 100%;
+    height: 75%;
+
+}
+
+.textoResultado {
+    margin-bottom: 10px;
+    background-color: yellowgreen;
+    width: 100%;
+    height: 75%;
+    margin-left: 15px;
+}
+
+.reiniciarQuizz {
+    width: 250px;
+    height: 52px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #EC362D;
+    border-radius: 15px;
+    border-style: none;
+    font-size: 21px;
+    color: #FFFFFF;
+}
+
+.voltarHome {
+    margin: 16px auto 15px auto;
+    font-size: 21px;
+    color: #818181;
+}
+
+/*classe "escondido" para esconder a tela de quando o usuário decide criar um quizz*/
+.escondido {
+    display: none;
+}
