@@ -75,19 +75,18 @@ function iniciarQuizz(elemento) {
         .then((response) => {
             console.log("apr respondeu")
             let quizz = response.data;
-            trocarTela(".Tela1", ".paginaQuizzSelecionado");
+            trocarTela(".Tela1", ".Tela2");
             renderizarQuizzSelecionado(quizz);
         });
 
 }
 
 function renderizarQuizzSelecionado(quizz) {
-    const paginaQuizzSelecionado = document.querySelector(".paginaQuizzSelecionado")
+    const paginaQuizzSelecionado = document.querySelector(".Tela2")
     let stringHTML =
-        `<div class="imagemQuizzSelecionado">
-            <img class="imagemQuizzSelecionado" src="${quizz.image}"/>
+        `   <img class="imagemQuizzSelecionado" src="${quizz.image}"/>
             <p>${quizz.title}</p>
-        </div>`;
+        `;
 
     for (let i = 0; i < quizz.questions.length; i++) {
         const question = quizz.questions[i];
@@ -101,9 +100,7 @@ function renderizarQuizzSelecionado(quizz) {
             const resposta = question.answers[j];
             stringHTML += `
             <div class="opcao" ehcorreta="${resposta.isCorrectAnswer}">
-                <div class="imagemOpcao">
-                    <img src="${resposta.image}"/>
-                </div>
+                <img class="imagemOpcao" src="${resposta.image}"/>
                 <div class="legendaOpcao">
                     ${resposta.text}
                 </div>
@@ -129,10 +126,15 @@ function renderizarQuizzSelecionado(quizz) {
                     </div>
                 </div>
                 <button class="reiniciarQuizz">Reiniciar Quizz</button>
-                <div class="voltarHome"> Voltar para Home</div>
+                <div onclick="voltarHome()" class="voltarHome"> Voltar para Home</div>
                 </div>`
     paginaQuizzSelecionado.innerHTML = stringHTML
     console.log(stringHTML)
+}
+
+function voltarHome() {
+    trocarTela(".Tela1",".Tela2")
+    
 }
 
 function embaralhaLista(lista) {
