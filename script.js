@@ -1,5 +1,9 @@
 const linkPegarListaQuizzes = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes';
-const UserQuizzesListaIds = [1,2,3];
+const UserQuizzesListaIds = [1, 2, 3];
+const PerguntasParaResponder = [];
+let score = 0;
+let quizzIniciado;
+
 
 function pegarUserQuizzes() {
     // thi: ainda não testei a parte de pegar o que foi criado porque depende de coisas não implementadas ainda
@@ -67,22 +71,22 @@ function divQuizz(titulo, urlImagem, quizzId) {
 }
 
 function iniciarQuizz(elemento) {
-    console.log("iniciou quizz")
     const quizzId = elemento.getAttribute('quizzId');
-    console.log(quizzId)
     let linkQuizzId = `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzId}`;
     axios.get(linkQuizzId)
         .then((response) => {
-            console.log("apr respondeu")
-            let quizz = response.data;
-            trocarTela(".Tela1", ".Tela2");
-            renderizarQuizzSelecionado(quizz);
+            quizzIniciado = response.data;
+            if (document.querySelector(".Tela2").classList.contains("escondido")) {
+                trocarTela(".Tela1", ".Tela2");
+            }
+            renderizarQuizzSelecionado(quizzIniciado);
+            window.scrollTo(0, 0);
         });
 
 }
 
 function renderizarQuizzSelecionado(quizz) {
-    const paginaQuizzSelecionado = document.querySelector(".Tela2")
+    const paginaQuizzSelecionado = document.querySelector(".Tela2");
     let stringHTML =
         `<div class="imagemQuizzSelecionado">  
             <img  src="${quizz.image}"/>
@@ -92,12 +96,13 @@ function renderizarQuizzSelecionado(quizz) {
 
     for (let i = 0; i < quizz.questions.length; i++) {
         const question = quizz.questions[i];
-        stringHTML += `<div class="caixaPergunta">
-        <div class="textoPergunta">
+        PerguntasParaResponder.push(i);
+        stringHTML += `<div class="caixaPergunta ${"pergunta" + i}" pergunta=${i}>
+            <div class="textoPergunta">
             <p>${question.title}</p>
-        </div>
+         </div>
         <div class="caixaOpcoes">`;
-        embaralhaLista(question.answers)
+        embaralhaLista(question.answers);
         for (let j = 0; j < question.answers.length; j++) {
             const resposta = question.answers[j];
             stringHTML += `
@@ -106,16 +111,16 @@ function renderizarQuizzSelecionado(quizz) {
                 <div class="legendaOpcao">
                     ${resposta.text}
                 </div>
-            </div>`
+            </div>`;
         }
-        stringHTML += `</div> <!--fecha caixaOpcoes  --> `
-        stringHTML += `</div> <!--fecha caixaPergunta -->`
+        stringHTML += `</div> <!--fecha caixaOpcoes  --> `;
+        stringHTML += `</div> <!--fecha caixaPergunta -->`;
     }
-    
+
     for (let i = 0; i < quizz.levels.length; i++) {
         const level = quizz.levels[i];
         // pendente: falta ver como fazer essa parte dos levels
-        
+
     }
     stringHTML += `
                 <div class="quizzFinalizado">
@@ -129,20 +134,41 @@ function renderizarQuizzSelecionado(quizz) {
                 </div>
                 <button class="reiniciarQuizz" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
                 <div onclick="voltarHome()" class="voltarHome"> Voltar para Home</div>
-                </div>`
-    paginaQuizzSelecionado.innerHTML = stringHTML
-    console.log(stringHTML)
+                </div>`;
+    paginaQuizzSelecionado.innerHTML = stringHTML;
 }
 function selecionaOpcao(elemento) {
     // pego o pai da opcão que é uma caixaOpcoes e adiciono class opcaoFeita pra formatar os filhos dessa caixa
-    const caixaOpcoes = elemento.parentNode
-    caixaOpcoes.classList.add("CaixaOpcaoFeita")
-    const opcao = elemento
-    opcao.classList.add("selecionado")
+    const caixaOpcoes = elemento.parentNode.parentNode;
+    let perguntaIndex = caixaOpcoes.getAttribute("pergunta");
+    if (!caixaOpcoes.classList.contains("CaixaOpcaoFeita")) {
+        caixaOpcoes.classList.add("CaixaOpcaoFeita");
+        const opcao = elemento;
+        opcao.classList.add("selecionado");
+        // aumenta o score
+        if(opcao.classList.contains("true")){score++}
+
+        // Após 2 segundos de respondida, deve-se scrollar a página para a próxima pergunta
+        // removo da lista de Perguntas pra Responder a pergunta que foi respondida
+        let index = PerguntasParaResponder.indexOf(Number(perguntaIndex));
+        if (index > -1) { // only splice array when item is found
+            PerguntasParaResponder.splice(index, 1); // 2nd parameter means remove one item only
+        }
+        if (PerguntasParaResponder.length > 0) {
+            let seletorProximapergunta = ".caixaPergunta.pergunta" + PerguntasParaResponder[0];
+            let proximaPergunta = document.querySelector(seletorProximapergunta);
+            setTimeout(() => proximaPergunta.scrollIntoView(), 2000);
+
+        } else {
+            // aqui respondeu todas as perguntas deve exibir o resultado final
+            let scorePorcentagem = score/quizzIniciado.questions.length
+            console.log(scorePorcentagem)
+        }
+    }
 }
 function voltarHome() {
-    trocarTela(".Tela1",".Tela2")
-    
+    trocarTela(".Tela1", ".Tela2");
+
 }
 
 function embaralhaLista(lista) {
@@ -153,10 +179,10 @@ function embaralhaLista(lista) {
 }
 
 //função que faz o usuário retornar ao topo da página quando decide reiniciar o quizz
-function reiniciarQuizz(){    
-const botao = document.querySelector('button');
-    botao = addEventListener("click", function() {
+function reiniciarQuizz() {
+    const botao = document.querySelector('button');
+    botao = addEventListener("click", function () {
         window.scrollTo(0, 0);
     });
-}   
+}
 
