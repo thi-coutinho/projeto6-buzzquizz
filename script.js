@@ -84,9 +84,11 @@ function iniciarQuizz(elemento) {
 function renderizarQuizzSelecionado(quizz) {
     const paginaQuizzSelecionado = document.querySelector(".Tela2")
     let stringHTML =
-        `   <img class="imagemQuizzSelecionado" src="${quizz.image}"/>
+        `<div class="imagemQuizzSelecionado">  
+            <img  src="${quizz.image}"/>
             <p>${quizz.title}</p>
-        `;
+         </div>
+            `;
 
     for (let i = 0; i < quizz.questions.length; i++) {
         const question = quizz.questions[i];
@@ -99,7 +101,7 @@ function renderizarQuizzSelecionado(quizz) {
         for (let j = 0; j < question.answers.length; j++) {
             const resposta = question.answers[j];
             stringHTML += `
-            <div class="opcao" ehcorreta="${resposta.isCorrectAnswer}">
+            <div class="opcao ${resposta.isCorrectAnswer}" onclick="selecionaOpcao(this)">
                 <img class="imagemOpcao" src="${resposta.image}"/>
                 <div class="legendaOpcao">
                     ${resposta.text}
@@ -131,7 +133,13 @@ function renderizarQuizzSelecionado(quizz) {
     paginaQuizzSelecionado.innerHTML = stringHTML
     console.log(stringHTML)
 }
-
+function selecionaOpcao(elemento) {
+    // pego o pai da opcão que é uma caixaOpcoes e adiciono class opcaoFeita pra formatar os filhos dessa caixa
+    const caixaOpcoes = elemento.parentNode
+    caixaOpcoes.classList.add("CaixaOpcaoFeita")
+    const opcao = elemento
+    opcao.classList.add("selecionado")
+}
 function voltarHome() {
     trocarTela(".Tela1",".Tela2")
     
