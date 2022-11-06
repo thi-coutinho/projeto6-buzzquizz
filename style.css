@@ -185,10 +185,26 @@ ion-icon {
 
 /*div em que estará a imagem do quizz selecionado*/
 .imagemQuizzSelecionado {
-    background-color: peru;
     opacity: 60%;
     width: 100%;
     height: 227px;
+
+}
+.quizzEscolhido{
+    width: 100%;
+    height: 227px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 50%, #000000 50%);
+    background-size: 100%;
+    position:relative; 
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+}
+.quizzEscolhido p{  
+    position: absolute; 
+    font-size: 34px;
+    font-weight: 500;
+    color: #FFFFFF;
 }
 
 /*página do quizz escolhido*/
@@ -222,7 +238,7 @@ ion-icon {
 }
 
 .textoPergunta p {
-    font-size: 23px;
+    font-size: 20px;
     color: #FAFAFA;
     text-align: center;
 }
@@ -238,21 +254,19 @@ ion-icon {
 
 /*div em que estará a alternativa, com imagem e legenda*/
 .opcao {
-    background-color: plum;
     width: 45%;
     height: 100%;
     margin-top: 20px;
 }
 
 .imagemOpcao {
-    background-color: aquamarine;
     width: 100%;
     height: 75%;
 }
 
 .legendaOpcao {
     margin-top: 6px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     height: 25%
 }
@@ -318,15 +332,28 @@ ion-icon {
     border-style: none;
     font-size: 21px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .voltarHome {
     margin: 16px auto 15px auto;
     font-size: 21px;
     color: #818181;
+    cursor: pointer;
 }
 
 /*classe "escondido" para esconder a tela de quando o usuário decide criar um quizz*/
 .escondido {
     display: none;
 }
+.respostaCerta{
+    color: green;
+}
+.respostaErrada{
+    color: red;
+}
+.opcaoOpaca{
+    opacity: 50%;
+}
+
+/*PAREI AQUI*/

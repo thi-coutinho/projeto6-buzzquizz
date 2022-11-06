@@ -84,8 +84,10 @@ function iniciarQuizz(elemento) {
 function renderizarQuizzSelecionado(quizz) {
     const paginaQuizzSelecionado = document.querySelector(".Tela2")
     let stringHTML =
-        `   <img class="imagemQuizzSelecionado" src="${quizz.image}"/>
+        `   <div class="quizzEscolhido">
+            <img class="imagemQuizzSelecionado" src="${quizz.image}"/>
             <p>${quizz.title}</p>
+            </div>
         `;
 
     for (let i = 0; i < quizz.questions.length; i++) {
@@ -125,7 +127,7 @@ function renderizarQuizzSelecionado(quizz) {
                         <div class="textoResultado">texto do resultado</div>
                     </div>
                 </div>
-                <button class="reiniciarQuizz">Reiniciar Quizz</button>
+                <button class="reiniciarQuizz" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
                 <div onclick="voltarHome()" class="voltarHome"> Voltar para Home</div>
                 </div>`
     paginaQuizzSelecionado.innerHTML = stringHTML
@@ -143,3 +145,12 @@ function embaralhaLista(lista) {
     }
     lista.sort(comparador); // Após esta linha, a lista estará embaralhada
 }
+
+//função que faz o usuário retornar ao topo da página quando decide reiniciar o quizz
+function reiniciarQuizz(){    
+const botao = document.querySelector('button');
+    botao = addEventListener("click", function() {
+        window.scrollTo(0, 0);
+    });
+}   
+
