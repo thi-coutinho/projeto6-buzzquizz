@@ -123,7 +123,7 @@ function renderizarQuizzSelecionado(quizz) {
 
     }
     stringHTML += `
-                <div class="quizzFinalizado">
+                <div class="quizzFinalizado escondido">
                     <div class="resultadoQuizz">
                         <p>resultado do quizz</p>
                     </div>
@@ -163,9 +163,42 @@ function selecionaOpcao(elemento) {
             // aqui respondeu todas as perguntas deve exibir o resultado final
             let scorePorcentagem = score/quizzIniciado.questions.length
             console.log(scorePorcentagem)
+            let levelAtingido = quizzIniciado.levels[0];
+            for (let level = quizzIniciado.levels.length-1; level >= 0; level--) {
+                console.log(quizzIniciado.levels[level])
+                const minScore = quizzIniciado.levels[level].minValue;
+                if (scorePorcentagem*100 >= minScore){
+                    levelAtingido = quizzIniciado.levels[level]
+                    break
+                }
+            }
+            
+            setTimeout(()=>{
+                const divResultado = document.querySelector(".quizzFinalizado")
+                divResultado.innerHTML = renderizarResultado(levelAtingido,scorePorcentagem)
+                divResultado.classList.remove("escondido")
+                divResultado.scrollIntoView()
+            },2000)
+
         }
     }
 }
+
+function renderizarResultado(levelAtingido,scorePorcentagem){
+    console.log(levelAtingido)
+    console.log(scorePorcentagem)
+
+    return `
+                <div class="resultadoQuizz">
+                    <p>${Math.floor(scorePorcentagem*100)}% de acerto: ${levelAtingido.title}</p>
+                </div>
+                <div class="descricaoResultado">
+                    <img class="imagemResultado" src="${levelAtingido.image}"/>
+                    <div class="textoResultado">${levelAtingido.text}</div>
+                </div>
+            `
+}
+
 function voltarHome() {
     trocarTela(".Tela1", ".Tela2");
 
