@@ -146,7 +146,7 @@ function selecionaOpcao(elemento) {
         const opcao = elemento;
         opcao.classList.add("selecionado");
         // aumenta o score
-        if(opcao.classList.contains("true")){score++}
+        if (opcao.classList.contains("true")) { score++; }
 
         // Após 2 segundos de respondida, deve-se scrollar a página para a próxima pergunta
         // removo da lista de Perguntas pra Responder a pergunta que foi respondida
@@ -161,47 +161,47 @@ function selecionaOpcao(elemento) {
 
         } else {
             // aqui respondeu todas as perguntas deve exibir o resultado final
-            let scorePorcentagem = score/quizzIniciado.questions.length
-            console.log(scorePorcentagem)
+            let scorePorcentagem = score / quizzIniciado.questions.length;
+            score = 0;
+            console.log(scorePorcentagem);
             let levelAtingido = quizzIniciado.levels[0];
-            for (let level = quizzIniciado.levels.length-1; level >= 0; level--) {
-                console.log(quizzIniciado.levels[level])
+            for (let level = quizzIniciado.levels.length - 1; level >= 0; level--) {
+                console.log(quizzIniciado.levels[level]);
                 const minScore = quizzIniciado.levels[level].minValue;
-                if (scorePorcentagem*100 >= minScore){
-                    levelAtingido = quizzIniciado.levels[level]
-                    break
+                if (scorePorcentagem * 100 >= minScore) {
+                    levelAtingido = quizzIniciado.levels[level];
+                    break;
                 }
             }
-            
-            setTimeout(()=>{
-                const divResultado = document.querySelector(".quizzFinalizado")
-                divResultado.innerHTML = renderizarResultado(levelAtingido,scorePorcentagem)
-                divResultado.classList.remove("escondido")
-                divResultado.scrollIntoView()
-            },2000)
+
+            setTimeout(() => {
+                const divResultado = document.querySelector(".quizzFinalizado");
+                divResultado.innerHTML = renderizarResultado(levelAtingido, scorePorcentagem);
+                divResultado.classList.remove("escondido");
+                divResultado.scrollIntoView();
+            }, 2000);
 
         }
     }
 }
 
-function renderizarResultado(levelAtingido,scorePorcentagem){
-    console.log(levelAtingido)
-    console.log(scorePorcentagem)
+function renderizarResultado(levelAtingido, scorePorcentagem) {
+    console.log(levelAtingido);
+    console.log(scorePorcentagem);
 
     return `
                 <div class="resultadoQuizz">
-                    <p>${Math.floor(scorePorcentagem*100)}% de acerto: ${levelAtingido.title}</p>
+                    <p>${Math.floor(scorePorcentagem * 100)}% de acerto: ${levelAtingido.title}</p>
                 </div>
                 <div class="descricaoResultado">
                     <img class="imagemResultado" src="${levelAtingido.image}"/>
                     <div class="textoResultado">${levelAtingido.text}</div>
                 </div>
-            `
+            `;
 }
 
 function voltarHome() {
     trocarTela(".Tela1", ".Tela2");
-
 }
 
 function embaralhaLista(lista) {
@@ -213,9 +213,8 @@ function embaralhaLista(lista) {
 
 //função que faz o usuário retornar ao topo da página quando decide reiniciar o quizz
 function reiniciarQuizz() {
-    const botao = document.querySelector('button');
-    botao = addEventListener("click", function () {
-        window.scrollTo(0, 0);
-    });
+    renderizarQuizzSelecionado(quizzIniciado)
+    window.scrollTo(0, 0);
+    
 }
 
