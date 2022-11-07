@@ -20,8 +20,208 @@
     <header>
         <p>BuzzQuizz</p>
     </header>
+    <!--página de criação do quizz-->
+    <div class="container">
+        <form action="" id="comeco-form">
+            <p class="titulo-form">Comece pelo começo</p>
+
+            <input type="text" name="titulo-do-quizz" id="titulo-do-quizz" placeholder="Título do quizzz" required
+                minlength="20">
+
+            <input type="url" name="url-imagem-quizz" id="url-imagem-quizz" placeholder="URL da imagem do seu quizz"
+                required>
+
+            <input type="number" name="quantidade-perguntas-quizz" id="quantidade-perguntas-quizz"
+                placeholder="Quantidade de perguntas do quizz" required min="3">
+
+            <input type="number" name="quantidade-niveis-quizz" id="quantidade-niveis-quizz"
+                placeholder="Quantidade de niveis do quizz" required min="2">
+
+            <button type="submit">Prosseguir para criar perguntas</button>
+        </form>
+
+        <form action="" id="perguntas-form" class="elemento-invisivel">
+            <p class="titulo-form">Crie suas perguntas</p>
+
+            <div id="container-pergunta-1">
+                <label>Pergunta 1</label>
+                <input type="text" name="texto-pergunta" class="texto-pergunta" placeholder="Texto da pergunta"
+                    required minlength="20">
+                    
+                <input class="cor-fundo" type="text" name="cor-fundo"
+                    placeholder="Cor de fundo da pergunta" required>
+
+                <label>Resposta correta</label>
+                <input type="text" class="resposta-correta" name="resposta-correta" placeholder="Resposta correta"
+                    required>
+
+                <input type="url" name="url-imagem-correta" class="url-imagem-correta" placeholder="URL da imagem"
+                    required>
+
+                <label>Respostas incorretas</label>
+                <input type="text" name="resposta-incorreta-1" class="resposta-incorreta-1"
+                    placeholder="Resposta incorreta 1" required>
+
+                <input type="url" name="url-imagem-incorreta-1" class="url-imagem-incorreta-1"
+                    placeholder="URL da imagem 1" required>
+
+                <input type="text" name="resposta-incorreta-2" class="resposta-incorreta-2"
+                    placeholder="Resposta incorreta 2">
+                <input type="text" name="url-imagem-incorreta-2" class="url-imagem-incorreta-2"
+                    placeholder="URL da imagem 2">
+
+                <input type="text" name="resposta-incorreta-3" class="resposta-incorreta-3"
+                    placeholder="Resposta incorreta 3">
+                <input type="text" name="url-imagem-incorreta-3" class="url-imagem-incorreta-3"
+                    placeholder="URL da imagem 3">
+            </div>
+
+            <!-- ----------------------------------------------------------------- -->
+
+            <div id="container-pergunta-2" class="elemento-invisivel">
+                <label>Pergunta 2</label>
+                
+                <input type="text" 
+                name="texto-pergunta" class="texto-pergunta" placeholder="Texto da pergunta"
+                    required minlength="20">
+                <input type="text" class="cor-fundo" name="cor-fundo"
+                    placeholder="Cor de fundo da pergunta" required>
+
+                <label>Resposta correta</label>
+                <input type="text" class="resposta-correta" name="resposta-correta" placeholder="Resposta correta"
+                    required>
+                <input type="url" name="url-imagem-correta" class="url-imagem-correta" placeholder="URL da imagem"
+                    required>
+
+                <label>Respostas incorretas</label>
+                <input type="text" name="resposta-incorreta-1" class="resposta-incorreta-1"
+                    placeholder="Resposta incorreta 1" required>
+
+                <input type="url" name="url-imagem-incorreta-1" class="url-imagem-incorreta-1"
+                    placeholder="URL da imagem 1" required>
+
+                <input type="text" name="resposta-incorreta-2" class="resposta-incorreta-2"
+                    placeholder="Resposta incorreta 2">
+                <input type="text" name="url-imagem-incorreta-2" class="url-imagem-incorreta-2"
+                    placeholder="URL da imagem 2">
+
+                <input type="text" name="resposta-incorreta-3" class="resposta-incorreta-3"
+                    placeholder="Resposta incorreta 3">
+                <input type="text" name="url-imagem-incorreta-3" class="url-imagem-incorreta-3"
+                    placeholder="URL da imagem 3">
+            </div>
+
+            <!-- ------------------------------------------------ -->
+
+            <div id="container-pergunta-3" class="elemento-invisivel">
+                <label>Pergunta 3</label>
+                <input type="text" name="texto-pergunta" class="texto-pergunta" placeholder="Texto da pergunta"
+                    required minlength="20">
+                <input type="text" class="cor-fundo" name="cor-fundo"
+                    placeholder="Cor de fundo da pergunta" required>
+
+                <label>Resposta correta</label>
+                <input type="text" class="resposta-correta" name="resposta-correta" class="respostas-correta-3" placeholder="Resposta correta"
+                    required>
+                <input type="url" name="url-imagem-correta" class="url-imagem-correta" placeholder="URL da imagem"
+                    required>
+
+                <label>Respostas incorretas</label>
+                <input type="text" name="resposta-incorreta" class="resposta-incorreta-1"
+                    placeholder="Resposta incorreta 1" required>
+
+                <input type="url" name="url-imagem-incorreta" class="url-imagem-incorreta-1"
+                    placeholder="URL da imagem 1" required>
+
+                <input type="text" name="resposta-incorreta" class="resposta-incorreta-2"
+                    placeholder="Resposta incorreta 2">
+                <input type="text" name="url-imagem-incorreta" class="url-imagem-incorreta-2"
+                    placeholder="URL da imagem 2">
+
+                <input type="text" name="resposta-incorreta" class="resposta-incorreta-3"
+                    placeholder="Resposta incorreta 3">
+                <input type="text" name="url-imagem-incorreta" class="url-imagem-incorreta-3"
+                    placeholder="URL da imagem 3">
+
+            </div>
+
+            <!-- ----------------------------------------------- -->
+
+            <div class="container-nova-pergunta">
+                <p>Pergunta 2</p>
+                <ion-icon id="botao-nova-pergunta-2" name="create-outline"></ion-icon>
+            </div>
+            <div class="container-nova-pergunta">
+                <p>Pergunta 3</p>
+                <ion-icon id="botao-nova-pergunta-3" name="create-outline"></ion-icon>
+            </div>
+
+            <button type="submit">Prosseguir para criar níveis</button>
+
+        </form>
+
+        <form action="" id="niveis-form" class="elemento-invisivel">
+            <p class="titulo-form">Agora, decida os níveis</p>
+
+            <div id="container-nivel-1">
+                <label>Nível 1</label>
+                <input type="text" name="titulo-nivel-1" class="titulo-nivel" placeholder="Título do nível" required
+                    minlength="10">
+                <input type="number" name="acerto-minimo-nivel-1" class="acerto-minimo-nivel" placeholder="% de acerto mínima" required
+                    min="0" max="100">
+                <input type="url" name="url-imagem-nivel-1" class="url-imagem-nivel" placeholder="URL da imagem do nível" required>
+                <input type="text" name="descricao-nivel-1" class="descricao-nivel" placeholder="Descrição do nível" required
+                    minlength="30">
+            </div>
+
+            <div id="container-nivel-2" class="elemento-invisivel">
+                <label>Nível 2</label>
+                <input type="text" name="titulo-nivel-2" class="titulo-nivel" placeholder="Título do nível" required
+                    minlength="10">
+                <input type="number" name="acerto-minimo-nivel-2" class="acerto-minimo-nivel" placeholder="% de acerto mínima" required
+                    min="0" max="100">
+                <input type="url" name="url-imagem-nivel-2" class="url-imagem-nivel" placeholder="URL da imagem do nível" required>
+                <input type="text" name="descricao-nivel-2" class="descricao-nivel" placeholder="Descrição do nível" required
+                    minlength="30">
+            </div>
+
+            <div id="container-nivel-3" class="elemento-invisivel">
+                <label>Nível 3</label>
+                <input type="text" name="titulo-nivel-3" class="titulo-nivel" placeholder="Título do nível" required
+                    minlength="10">
+                <input type="number" name="acerto-minimo-nivel-3" class="acerto-minimo-nivel" placeholder="% de acerto mínima" required
+                    min="0" max="100">
+                <input type="url" name="url-imagem-nivel-3" class="url-imagem-nivel" placeholder="URL da imagem do nível" required>
+                <input type="text" name="descricao-nivel-3" class="descricao-nivel" placeholder="Descrição do nível" required
+                    minlength="30">
+            </div>
+
+            <div class="container-nova-pergunta">
+                <label>Nível 2</label>
+                <ion-icon id="botao-novo-nivel-2" name="create-outline"></ion-icon>
+            </div>
+            <div class="container-nova-pergunta">
+                <label>Nível 3</label>
+                <ion-icon id="botao-novo-nivel-3" name="create-outline"></ion-icon>
+            </div>
+
+            <button type="submit">Finalizar QUizz</button>
+        </form>
+
+        <form action="" id="fim-form" class="elemento-invisivel">
+            <p class="titulo-form">Seu quizz está pronto!</p>
+
+            <div id="container-image-quizz">
+                <img id="image-quizz" src="" alt="">
+                <p id="titulo-quizz"></p>
+            </div>
+
+            <button type="submit">Acessar Quizz</button>
+            <a class="voltar-para-home" onclick="irParaHome()">Voltar pra home</a>
+        </form>
+    </div>
     <!--conteúdo do site-->
-    <div class="conteudo-total">
+    <div class="conteudo-total escondido">
         <div class="Tela1">
             <!--Div para o usuário criar seu próprio quizz-->
             <div class="quizzUsuario">
@@ -37,15 +237,15 @@
                 </div>
                 <!--div com os quizzes que o usuário criar-->
                 <div class="quizzUser">
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
@@ -57,27 +257,27 @@
                 <div class="texto2">Todos os quizzes</div>
                 <div class="quizzesDisponiveis">
                     <!-- divs de cada quizz -->
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>
-                    <div class="quizz">
+                    <div class="cadaQuizz">
                         <div class="imagemQuiz">imagem do quizz</div>
                         <div class="nomeQuizz">nome do quizz</div>
                     </div>

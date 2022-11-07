@@ -64,7 +64,7 @@ function renderizarListaQuizzes(response) {
 function divQuizz(titulo, urlImagem, quizzId) {
     let style = `background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%),url(${urlImagem});
                  background-size: 100%;`;
-    return `<div onclick="iniciarQuizz(this)" quizzId="${quizzId}" class="quizz">         
+    return `<div onclick="iniciarQuizz(this)" quizzId="${quizzId}" class="cadaQuizz">         
                 <div class="imagemQuiz" style='${style}'></div>
                 <div class="nomeQuizz">${titulo}</div>
             </div>`;
@@ -206,3 +206,299 @@ function reiniciarQuizz() {
     
 }
 
+// função da criação do quizz
+
+let quizz = {
+    title: "",
+    image: "",
+    questions: [
+        {
+            title: "",
+            color: "",
+            answers: [
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                }
+            ]
+        },
+        {
+            title: "",
+            color: "",
+            answers: [
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                }
+            ]
+        },
+        {
+            title: "",
+            color: "",
+            answers: [
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                },
+                {
+                    text: "",
+                    image: "",
+                    isCorrectAnswer: false
+                }
+            ]
+        }
+    ],
+    levels: [
+        {
+            title: "",
+            image: "",
+            text: "",
+            minValue: 0
+        },
+        {
+            title: "",
+            image: "",
+            text: "",
+            minValue: 0
+        },
+        {
+            title: "",
+            image: "",
+            text: "",
+            minValue: 0
+        }
+    ]
+}
+
+// seleciona o formulario da tela inicial
+const comeco_form = document.querySelector('#comeco-form')
+// seleciona o formulario da tela de perguntas
+const perguntas_form = document.querySelector('#perguntas-form');
+// seleciona o formulario da tela de niveis
+const niveis_form = document.querySelector('#niveis-form');
+// seleciona o formulario da tela final
+const fim_form = document.querySelector('#fim-form');
+
+// Evento de rota para pagina de perguntas
+comeco_form.addEventListener('submit', (e) => {
+    //esconda a primeira tela e mostra a tela de perguntas
+    comeco_form.classList.toggle('elemento-invisivel');
+    perguntas_form.classList.toggle('elemento-invisivel');
+
+    const titulo_quizz = document.querySelector('#titulo-do-quizz').value;
+
+    const url_imagem_quizz = document.querySelector('#url-imagem-quizz').value;
+
+    quizz.title = titulo_quizz;
+    quizz.image = url_imagem_quizz;
+
+    console.log(quizz.questions);
+
+    e.preventDefault();
+})
+
+// evento de rota para paginas de niveis
+perguntas_form.addEventListener('submit', (e) => {
+
+    let texto_perguntas = document.querySelectorAll('.texto-pergunta');
+    let cor_perguntas = document.querySelectorAll('.cor-fundo');
+    let respostas_corretas = document.querySelectorAll('.resposta-correta');
+    let url_imagem_correta = document.querySelectorAll('.url-imagem-correta');
+    let respostas_incorretas_1 = document.querySelectorAll('.resposta-incorreta-1');
+    let url_imagens_incorretas_1 = document.querySelectorAll('.url-imagem-incorreta-1');
+    let respostas_incorretas_2 = document.querySelectorAll('.resposta-incorreta-2');
+    let url_imagens_incorretas_2 = document.querySelectorAll('.url-imagem-incorreta-2');
+    let respostas_incorretas_3 = document.querySelectorAll('.resposta-incorreta-3');
+    let url_imagens_incorretas_3 = document.querySelectorAll('.url-imagem-incorreta-3');
+
+
+    // titulos
+    for (let index = 0; index < cor_perguntas.length; index++) {
+        quizz.questions[index].title = texto_perguntas[index].value
+    }
+
+    // cores
+    for (let index = 0; index < cor_perguntas.length; index++) {
+        quizz.questions[index].color = cor_perguntas[index].value
+    }
+
+    // respostas correta
+    for (let index = 0; index < respostas_corretas.length; index++) {
+        quizz.questions[index].answers[0].text = respostas_corretas[index].value
+        quizz.questions[index].answers[0].image = url_imagem_correta[index].value
+        quizz.questions[index].answers[0].isCorrectAnswer = 'true'
+    }
+
+    // resposta incorreta 1
+    for (let index = 0; index < respostas_incorretas_1.length; index++) {
+        quizz.questions[index].answers[1].text = respostas_incorretas_1[index].value
+        quizz.questions[index].answers[1].image = url_imagens_incorretas_1[index].value
+    }
+
+    // resposta incorreta 2
+    for (let index = 0; index < respostas_incorretas_2.length; index++) {
+        quizz.questions[index].answers[2].text = respostas_incorretas_2[index].value
+        quizz.questions[index].answers[2].image = url_imagens_incorretas_2[index].value
+    }
+
+    // resposta incorreta 3
+    for (let index = 0; index < respostas_incorretas_3.length; index++) {
+        quizz.questions[index].answers[3].text = respostas_incorretas_3[index].value
+        quizz.questions[index].answers[3].image = url_imagens_incorretas_3[index].value
+    }
+
+    // esconde a tela de perguntas e mostra a tela de niveis
+    perguntas_form.classList.toggle('elemento-invisivel');
+    niveis_form.classList.toggle('elemento-invisivel');
+    e.preventDefault();
+
+})
+
+// evento de rota para pagina final
+niveis_form.addEventListener('submit', (e) => {
+
+    const titulo_nivel = document.querySelectorAll('.titulo-nivel');
+    const url_imagem_nivel = document.querySelectorAll('.url-imagem-nivel');
+    const descricao_nivel = document.querySelectorAll('.descricao-nivel');
+    const acerto_minimo_nivel = document.querySelectorAll('.acerto-minimo-nivel');
+    const quizz_titulo = document.querySelector('#titulo-quizz');
+    const quizz_imagem = document.querySelector('#image-quizz');
+
+    for (let index = 0; index < titulo_nivel.length; index++) {
+        quizz.levels[index].title = titulo_nivel[index].value;
+        quizz.levels[index].image = url_imagem_nivel[index].value;
+        quizz.levels[index].text = descricao_nivel[index].value;
+        quizz.levels[index].minValue = acerto_minimo_nivel[index].value;
+    }
+
+
+    quizz_titulo.textContent = quizz.title
+    quizz_imagem.src = quizz.image;
+
+    // APLICAR LOCAL STORAGE AQUI
+    // localStorage.setItem
+
+    // esconde a tela de niveis e mostra a ultima tela
+    niveis_form.classList.toggle('elemento-invisivel');
+    fim_form.classList.toggle('elemento-invisivel');
+    e.preventDefault();
+})
+
+// seleciona os inputs de cores
+let input_cor = document.querySelectorAll('.cor-fundo');
+
+for (let index = 0; index < input_cor.length; index++) {
+    input_cor[index].addEventListener('blur', validarInputCor);
+}
+
+// funcao para validar os inputs de cores
+function validarInputCor() {
+    if (this.value[0] != '#') {
+        alert('não é uma cor!');
+        this.value = '';
+    } else
+        if (this.value.length != 7) {
+            alert(`Siga o padrão de cor hexa decimal: #000000`)
+            this.value = '';
+        }
+}
+
+// funcao para criar novas perguntas na tela de pergunta
+function criarNovasPerguntas() {
+    let container_pergunta_2 = document.querySelector('#container-pergunta-2');
+    let container_pergunta_3 = document.querySelector('#container-pergunta-3');
+    let icones = document.querySelectorAll('ion-icon')
+
+    for (let index = 0; index < icones.length; index++) {
+        icones[index].addEventListener('click', (e) => {
+            if (icones[index].id == 'botao-nova-pergunta-2') {
+                container_pergunta_2.classList.toggle('elemento-invisivel');
+            } else {
+                container_pergunta_3.classList.toggle('elemento-invisivel');
+            }
+
+            e.preventDefault();
+        })
+    }
+}
+
+// funcao para criar novos niveis da tela de niveis
+function criarNovosNiveis() {
+    let container_nivel_2 = document.querySelector('#container-nivel-2');
+    let container_nivel_3 = document.querySelector('#container-nivel-3');
+    let icones = document.querySelectorAll('ion-icon')
+
+    for (let index = 0; index < icones.length; index++) {
+        icones[index].addEventListener('click', (e) => {
+
+            if (icones[index].id == 'botao-novo-nivel-2') {
+                container_nivel_2.classList.toggle('elemento-invisivel');
+            } else if (icones[index].id == 'botao-novo-nivel-3') {
+                container_nivel_3.classList.toggle('elemento-invisivel');
+            }
+
+            e.preventDefault();
+        })
+    }
+}
+
+// funcao com rota de inicio aplciada no link da ultima tela
+function irParaHome() {
+    let inputs = document.querySelectorAll('input');
+
+    inputs.forEach(element => {
+        element.value = '';
+    });
+
+    fim_form.classList.toggle('elemento-invisivel');
+    comeco_form.classList.toggle('elemento-invisivel');
+
+}
+
+
+criarNovasPerguntas();
+criarNovosNiveis();
+validarInputCor();
