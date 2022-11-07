@@ -104,12 +104,12 @@ function renderizarQuizzSelecionado(quizz) {
         <div class="caixaOpcoes">`;
         embaralhaLista(question.answers);
         for (let j = 0; j < question.answers.length; j++) {
-            const resposta = question.answers[j];
+            const opcao = question.answers[j];
             stringHTML += `
-            <div class="opcao ${resposta.isCorrectAnswer}" onclick="selecionaOpcao(this)">
-                <img class="imagemOpcao" src="${resposta.image}"/>
+            <div class="opcao ${opcao.isCorrectAnswer}" onclick="selecionaOpcao(this)">
+                <img class="imagemOpcao" src="${opcao.image}"/>
                 <div class="legendaOpcao">
-                    ${resposta.text}
+                    ${opcao.text}
                 </div>
             </div>`;
         }
@@ -124,13 +124,6 @@ function renderizarQuizzSelecionado(quizz) {
     }
     stringHTML += `
                 <div class="quizzFinalizado escondido">
-                    <div class="resultadoQuizz">
-                        <p>resultado do quizz</p>
-                    </div>
-                    <div class="descricaoResultado">
-                        <div class="imagemResultado">imagem</div>
-                        <div class="textoResultado">texto do resultado</div>
-                    </div>
                 </div>
                 <button class="reiniciarQuizz" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
                 <div onclick="voltarHome()" class="voltarHome"> Voltar para Home</div>
@@ -163,10 +156,8 @@ function selecionaOpcao(elemento) {
             // aqui respondeu todas as perguntas deve exibir o resultado final
             let scorePorcentagem = score / quizzIniciado.questions.length;
             score = 0;
-            console.log(scorePorcentagem);
             let levelAtingido = quizzIniciado.levels[0];
             for (let level = quizzIniciado.levels.length - 1; level >= 0; level--) {
-                console.log(quizzIniciado.levels[level]);
                 const minScore = quizzIniciado.levels[level].minValue;
                 if (scorePorcentagem * 100 >= minScore) {
                     levelAtingido = quizzIniciado.levels[level];
@@ -186,9 +177,6 @@ function selecionaOpcao(elemento) {
 }
 
 function renderizarResultado(levelAtingido, scorePorcentagem) {
-    console.log(levelAtingido);
-    console.log(scorePorcentagem);
-
     return `
                 <div class="resultadoQuizz">
                     <p>${Math.floor(scorePorcentagem * 100)}% de acerto: ${levelAtingido.title}</p>
